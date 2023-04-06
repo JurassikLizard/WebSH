@@ -1,0 +1,16 @@
+{
+  "name": "webshclient",
+  "version": "1.0.0",
+  "description": "WebSH Client",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.3",
+    "xterm": "^5.1.0"
+  }
+}
