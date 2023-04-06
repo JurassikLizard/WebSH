@@ -1,7 +1,0 @@
-Server:
-- C#
-- Creates CMD process locally and redirects out/in to remote
-
-Client:
-- Node.js
-- Recieves input, maybe has an integrated text editor.

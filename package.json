@@ -1,0 +1,33 @@
+{
+  "name": "websh",
+  "version": "1.0.0",
+  "description": "Web dec environment test",
+  "main": "server.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/server.js",
+    "start": "concurrently npm:start:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JurassikLizard/WebSH.git"
+  },
+  "author": "JurassikLizard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JurassikLizard/WebSH/issues"
+  },
+  "homepage": "https://github.com/JurassikLizard/WebSH#readme",
+  "dependencies": {
+    "nodemon": "^2.0.22",
+    "query-string": "^8.1.0",
+    "querystringify": "^2.2.0",
+    "ssh2": "^1.11.0",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/querystringify": "^2.0.0",
+    "@types/ssh2": "^1.11.9",
+    "@types/ws": "^8.5.4"
+  }
+}
