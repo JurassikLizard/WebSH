@@ -24,7 +24,6 @@ wss.on('connection', (ws, req) => {
         return
     }
     const parsed = (parse(req.url.split("?")[1]) as SSHInfo)
-    console.log(parsed)
     
     if(parsed.address == null || parsed.username == null || parsed.password == null) {
         ws.close()
@@ -40,7 +39,6 @@ wss.on('connection', (ws, req) => {
 
     const conn = new Client();
     conn.on('ready', () => {
-        console.log('Client :: ready');
         connections.set(ws, { conn })
         sendMessage(ws, 'Successfully connected to SSH!')
         
@@ -51,10 +49,8 @@ wss.on('connection', (ws, req) => {
             }
 
             stream.on('close', () => {
-              console.log('Stream :: close');
               conn.end();
             }).on('data', (data: string) => {
-              console.log(data.toString());
               ws.send('term|' + data.toString())
             })
 
