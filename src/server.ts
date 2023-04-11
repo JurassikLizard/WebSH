@@ -42,7 +42,7 @@ wss.on('connection', (ws, req) => {
         connections.set(ws, { conn })
         sendMessage(ws, 'Successfully connected to SSH!')
         
-        conn.shell({ rows: parsed.rows, cols: parsed.cols, term: 'xterm-256color' } as ShellOptions, (err, stream) => {
+        conn.shell({ rows: Number(parsed.rows), cols: Number(parsed.cols) } as ShellOptions, (err, stream) => {
             if (err) {
                 sendMessage(ws, 'There was a problem with the shell!')
                 conn.end()

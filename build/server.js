@@ -14,7 +14,6 @@ wss.on('connection', (ws, req) => {
         return;
     }
     const parsed = (0, querystringify_1.parse)(req.url.split("?")[1]);
-    console.log(parsed);
     if (parsed.address == null || parsed.username == null || parsed.password == null) {
         ws.close();
         return;
@@ -27,19 +26,18 @@ wss.on('connection', (ws, req) => {
     }
     const conn = new ssh2_1.Client();
     conn.on('ready', () => {
-        console.log('Client :: ready');
         connections.set(ws, { conn });
         sendMessage(ws, 'Successfully connected to SSH!');
-        conn.shell({ rows: parsed.rows, cols: parsed.cols, term: 'xterm-256color' }, (err, stream) => {
+        console.log(parsed.cols);
+        conn.shell({ rows: Number(parsed.rows), cols: Number(parsed.cols) }, (err, stream) => {
+            console.log(parsed.rows);
             if (err) {
                 sendMessage(ws, 'There was a problem with the shell!');
                 conn.end();
             }
             stream.on('close', () => {
-                console.log('Stream :: close');
                 conn.end();
             }).on('data', (data) => {
-                console.log(data.toString());
                 ws.send('term|' + data.toString());
             });
             ws.on('message', (data) => {
